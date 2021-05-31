@@ -1,13 +1,107 @@
 body {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.cont{
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  justify-content: center;
 }
+.dashboard-cont{
+  padding: 15px;
+}
+.search-cont{
+  min-width: 200px;
+  width: 30%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.search-cont input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+.search-btn{
+  margin: auto 0;
+  float: left;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+.gallery-cont{
+  margin: 15px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  grid-gap: 1em;
+}
+.gallery-item {
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 256px;
+  color: white;
+  background-color: rgb(49, 49, 49);
+  cursor: pointer;
+}
+.img-placeholder{
+  background-color: gray;
+  width: 184px;
+  height: 184px;
+  overflow: hidden;
+}
+.gallery-item img{
+   width: 184px;
+}
+.d-error-msg{
+  height: 30px;
+  color: red;
+}
+.pl-item{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: auto;
+  border-bottom: 1px solid grey;
+  margin: 10px 0;
+  color: rgb(71, 71, 71);
+  line-height: 0.1;
+}
+.pl-img-placeholder{
+  background-color: gray;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+}
+.pl-item img{
+  width: 80px;
+}
+.mrg-r{
+  margin-right: 20px;
+}
+.mrg-l{
+  margin-left: 20px;
+}
+

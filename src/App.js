@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import Dashboard from './components/Dashboard';
+import Gallery from './components/Gallery';
+import { getAccessToken } from './utils/functions';
 
-function App() {
+
+const App = () => {  
+  const playlists = useSelector((state) => state.playlistReducer); 
+
+  useEffect(() =>{
+    getAccessToken();
+  },[]);
+  useEffect(() =>{
+    console.log("App>>>>playlists: ",playlists);
+  },[playlists]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Dashboard />
+      {
+        playlists && playlists.items && playlists.items.length > 0 &&
+           <Gallery data={playlists.items}/>
+      }
+      
     </div>
   );
 }
