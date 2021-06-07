@@ -1,6 +1,6 @@
 import { SET_PLAYLIST, ADD_PLAYLIST } from '../actions/playlistAction';
 
-const playlistReducer = (state = {}, action) => {
+const playlistReducer = (state = [], action) => {
   const { playlists } = action;
   switch (action.type) {
     case SET_PLAYLIST:

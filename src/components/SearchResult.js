@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo} from 'react'
+import React, {useEffect, useCallback, useMemo} from 'react'
 import PlaylistsGallery from './PlaylistsGallery';
 import CurrentPlaylistArea from './CurrentPlaylistArea';
 import { useSelector } from "react-redux";
@@ -8,28 +8,29 @@ import { useSelector } from "react-redux";
 
 const SearchResult = () => {
     const playlists = useSelector((state) => state.playlistReducer); 
-    const currentPlaylists = useSelector((state) => state.currentPlaylistReducer); 
-    
+    const currentPlaylist = useSelector((state) => state.currentPlaylistReducer); 
 
     const playlistsData = useMemo(()=>{
-        console.log("SearchResult>>>>playlists", playlists)
-        return playlists.items
+        //console.log("SearchResult>>>>playlists", playlists);
+        return playlists
     }
      ,[playlists]);
 
-    const currentPlaylistData = useMemo(()=>
-       currentPlaylists.items
-     ,[currentPlaylists]);
+     const currentPlaylistData = useMemo(()=> {
+        // console.log("SearchResult>>>>>currentPlaylist", currentPlaylist);
+         return currentPlaylist;
+    }
+      ,[currentPlaylist]);
 
     
     return (
         <div className="gallery-cont">
-            {
-              currentPlaylists && currentPlaylists.items && currentPlaylists.items.length > 0
+            { 
+              currentPlaylistData && currentPlaylistData.length > 0
               ?
                 <CurrentPlaylistArea data={currentPlaylistData} />
               :
-              playlists && playlists.items && playlists.items.length > 0 &&
+              playlistsData && playlistsData.length > 0 &&
                 <PlaylistsGallery data={playlistsData} />
             }
         </div>

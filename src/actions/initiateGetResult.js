@@ -10,7 +10,7 @@ export const initiateGetResult = (searchTerm) => {
         const result = await get(API_URL);
         console.log(result);
         const { playlists } = result;
-        return dispatch(playlistAction.setPlayList(playlists));
+        return dispatch(playlistAction.setPlayList(playlists.items));
       } catch (error) {
         console.log('error', error);
       }

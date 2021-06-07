@@ -1,9 +1,9 @@
-import {GET_PLAYLIST} from '../actions/playlistAction';
+import {CURRENT_PLAYLIST} from '../actions/playlistAction';
 
-const currentPlaylistReducer = (state = {}, action) => {
-    const { currentPlaylist } = action;
+const currentPlaylistReducer = (state = [], action) => {
+   const { currentPlaylist } = action;
   switch (action.type) {
-    case GET_PLAYLIST:
+    case CURRENT_PLAYLIST:
       return  currentPlaylist;
     default:
       return state;

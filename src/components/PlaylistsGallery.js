@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useCallback, useMemo} from 'react'
+import React, {useEffect, useState} from 'react'
 import GalleryItem from './GalleryItem';
 import { useDispatch } from "react-redux";
 //import {initiateLoadMorePlaylist} from '../actions/playlistAction';
@@ -14,8 +14,8 @@ const PlaylistsGallery = ({data}) => {
 
     const dispatch = useDispatch();
 
-    const loadMore = async (url,type) => {
-        await dispatch(getCurrentPlaylist(url));
+    const loadMore = (url) => {
+         dispatch(getCurrentPlaylist(url));
        // setIsLoading(true);
     };
 

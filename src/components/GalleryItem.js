@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 
 const GalleryItem = ({data, loadMore}) => {
-    const [category, setCategory] = useState(data.type);
 
     const onItemClick = (e) => {
         e.preventDefault();
-        //if(category==="playlist")
-        loadMore(data.tracks.href, category);
+        loadMore(data.tracks.href);
+        console.log(data.images[0].url);
     }
 
     return (

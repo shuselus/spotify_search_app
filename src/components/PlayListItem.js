@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import playBtn from '../svg/playBtn.svg'
+// import playBtn from '../svg/playBtn.svg'
 
  const PlayListItem = ({data, getTrackUri}) => {
     const [image, setImage] = useState("");
+    const date = new Date(data.added_at);
+    const addedDate = date.getDate() + "." + date.getMonth() + "." + date.getFullYear();
 
     useEffect(()=>{
         if(data.track.album.images &&  data.track.album.images.length === 3){
@@ -23,19 +25,22 @@ import playBtn from '../svg/playBtn.svg'
     return (
 
         <div className="pl-item">
-                <div className="pl-img-placeholder">
+                <div className="pl-img-placeholder" onClick={(e)=>onClickHandler(e)}>
+                <div className="pl-play-btn">
+                    <svg  height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+                       <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="#fff"></polygon>
+                    </svg>
+                   </div>
                   <img src={image} alt={`albume image`} />
                 </div>      
                 <div className="cont  mrg-l">         
                     <div><strong>{`artist: ${data.track.album.artists[0].name}`}</strong></div>
                     <span><strong>album: </strong>{data.track.album.name}</span>
-                    <span>{`track: ${data.track.name}`}</span>
+                    <span><strong>track: </strong>{data.track.name}</span>
+                    <span><strong>added: </strong>{addedDate}</span>
                 </div>
-                <div className="pl-play-btn mrg-l" onClick={(e)=>onClickHandler(e)}>
-                <svg  height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
-   <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="#fff"></polygon>
-</svg>
-                </div>
+           
+           
         </div>
     )
 }

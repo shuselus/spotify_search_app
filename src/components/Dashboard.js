@@ -53,7 +53,7 @@ export default function Dashboard() {
             }
             </div>
             {
-                currentPlaylists && currentPlaylists.items && currentPlaylists.items.length > 0 &&
+                currentPlaylists && currentPlaylists.length > 0 &&
                     <div className="back-btn-cont" onClick={(e) => goBackHandler(e)}>
                        <img src={LeftArrowSvg} className="back-arrow" alt="back-arrow" />
                        <span>back to playlists gallery</span>
