@@ -1,6 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
+import playBtn from '../svg/playBtn.svg'
 
- const PlayListItem = ({data}) => {
+ const PlayListItem = ({data, getTrackUri}) => {
     const [image, setImage] = useState("");
 
     useEffect(()=>{
@@ -15,6 +16,7 @@ import React, {useState, useEffect} from 'react'
 
     const onClickHandler = (e) => {
         e.preventDefault();
+        getTrackUri(data.track.uri)
         //play track //data.track.uri
     }
 
@@ -25,11 +27,15 @@ import React, {useState, useEffect} from 'react'
                   <img src={image} alt={`albume image`} />
                 </div>      
                 <div className="cont  mrg-l">         
-                    <p>{`artist: ${data.track.album.artists[0].name}`}</p>
-                    <p>{`album: ${data.track.album.name}`}</p>
-                    <p>{`track: ${data.track.name}`}</p>
+                    <div><strong>{`artist: ${data.track.album.artists[0].name}`}</strong></div>
+                    <span><strong>album: </strong>{data.track.album.name}</span>
+                    <span>{`track: ${data.track.name}`}</span>
                 </div>
-                <button className="pl-play-btn" onClick={(e)=>onClickHandler(e)}>play</button>
+                <div className="pl-play-btn mrg-l" onClick={(e)=>onClickHandler(e)}>
+                <svg  height="16" role="img" width="16" viewBox="0 0 24 24" aria-hidden="true">
+   <polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="#fff"></polygon>
+</svg>
+                </div>
         </div>
     )
 }

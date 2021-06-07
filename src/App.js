@@ -1,27 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
 import Dashboard from './components/Dashboard';
-import Gallery from './components/Gallery';
+import SearchResult from './components/SearchResult';
+import Login from './components/Login';
 import { getAccessToken } from './utils/functions';
-
+//import { getParamValues } from './utils/functions';
 
 const App = () => {  
-  const playlists = useSelector((state) => state.playlistReducer); 
-
+  //const [accessToken, setAccessToken] = useState(null);
+  //const [expiryTime, setExpiryTime] = useState({})
+  
   useEffect(() =>{
     getAccessToken();
   },[]);
-  useEffect(() =>{
-    console.log("App>>>>playlists: ",playlists);
-  },[playlists]);
+  
   return (
-    <div className="container">
+    <div className="app-cont">
       <Dashboard />
-      {
-        playlists && playlists.items && playlists.items.length > 0 &&
-           <Gallery data={playlists.items}/>
-      }
-      
+      <SearchResult />
     </div>
   );
 }

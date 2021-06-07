@@ -25,7 +25,6 @@ export const setAuthHeader = () => {
   }
 };
 
-
 export const getAccessToken = () => {
   const spotify = Credentials();  
   try {
@@ -43,3 +42,4 @@ export const getAccessToken = () => {
     });
   } catch (error) {console.log(error)}
 }
+

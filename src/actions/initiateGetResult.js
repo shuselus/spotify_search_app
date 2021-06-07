@@ -1,5 +1,3 @@
-import * as albumsAction from './albumsAction';
-import * as artistsAction from './artistsAction';
 import * as playlistAction from './playlistAction';
 import { get } from '../utils/api';
 
@@ -11,9 +9,7 @@ export const initiateGetResult = (searchTerm) => {
         )}&type=album,playlist,artist`;
         const result = await get(API_URL);
         console.log(result);
-        const { albums, artists, playlists } = result;
-        dispatch(albumsAction.setAlbums(albums));
-        dispatch(artistsAction.setArtists(artists));
+        const { playlists } = result;
         return dispatch(playlistAction.setPlayList(playlists));
       } catch (error) {
         console.log('error', error);
